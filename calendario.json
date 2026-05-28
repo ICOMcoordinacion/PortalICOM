@@ -3,56 +3,56 @@
         {
             "id": 1,
             "nombre": "Inicio de módulo",
-            "fecha": "2025-05-04",
+            "fecha": "2025-05-02",
             "tipo": "inicio",
             "descripcion": "Comienzo del nuevo módulo académico. Bienvenida y presentación del plan de estudios."
         },
         {
             "id": 2,
             "nombre": "Semana 1",
-            "fecha": "2025-05-11",
+            "fecha": "2025-05-9",
             "tipo": "semana",
             "descripcion": "Primera semana de clases. Introducción a los temas fundamentales."
         },
         {
             "id": 3,
             "nombre": "Semana 2",
-            "fecha": "2025-05-19",
+            "fecha": "2025-05-16",
             "tipo": "semana",
             "descripcion": "Desarrollo de conceptos clave y primeros ejercicios prácticos."
         },
         {
             "id": 4,
             "nombre": "Semana 3",
-            "fecha": "2025-05-26",
+            "fecha": "2025-05-23",
             "tipo": "semana",
             "descripcion": "Profundización en casos de estudio y trabajo colaborativo."
         },
         {
             "id": 5,
             "nombre": "Semana 4",
-            "fecha": "2025-06-02",
+            "fecha": "2025-05-30",
             "tipo": "semana",
             "descripcion": "Revisión de avances y preparación para evaluaciones."
         },
         {
             "id": 6,
             "nombre": "Semana 5",
-            "fecha": "2025-06-09",
+            "fecha": "2025-06-06",
             "tipo": "semana",
             "descripcion": "Cierre de contenidos y proyectos integradores."
         },
         {
             "id": 7,
             "nombre": "Semana de exámenes",
-            "fecha": "2025-06-16",
+            "fecha": "2025-06-13",
             "tipo": "examenes",
             "descripcion": "Evaluaciones finales teórico-prácticas."
         },
         {
             "id": 8,
             "nombre": "Semana extracurricular",
-            "fecha": "2025-06-23",
+            "fecha": "2025-06-20",
             "tipo": "extra",
             "descripcion": "Talleres, conferencias y actividades complementarias."
         }
