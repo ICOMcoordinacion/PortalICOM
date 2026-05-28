@@ -1,0 +1,60 @@
+{
+    "eventos": [
+        {
+            "id": 1,
+            "nombre": "Inicio de módulo",
+            "fecha": "2025-05-04",
+            "tipo": "inicio",
+            "descripcion": "Comienzo del nuevo módulo académico. Bienvenida y presentación del plan de estudios."
+        },
+        {
+            "id": 2,
+            "nombre": "Semana 1",
+            "fecha": "2025-05-11",
+            "tipo": "semana",
+            "descripcion": "Primera semana de clases. Introducción a los temas fundamentales."
+        },
+        {
+            "id": 3,
+            "nombre": "Semana 2",
+            "fecha": "2025-05-19",
+            "tipo": "semana",
+            "descripcion": "Desarrollo de conceptos clave y primeros ejercicios prácticos."
+        },
+        {
+            "id": 4,
+            "nombre": "Semana 3",
+            "fecha": "2025-05-26",
+            "tipo": "semana",
+            "descripcion": "Profundización en casos de estudio y trabajo colaborativo."
+        },
+        {
+            "id": 5,
+            "nombre": "Semana 4",
+            "fecha": "2025-06-02",
+            "tipo": "semana",
+            "descripcion": "Revisión de avances y preparación para evaluaciones."
+        },
+        {
+            "id": 6,
+            "nombre": "Semana 5",
+            "fecha": "2025-06-09",
+            "tipo": "semana",
+            "descripcion": "Cierre de contenidos y proyectos integradores."
+        },
+        {
+            "id": 7,
+            "nombre": "Semana de exámenes",
+            "fecha": "2025-06-16",
+            "tipo": "examenes",
+            "descripcion": "Evaluaciones finales teórico-prácticas."
+        },
+        {
+            "id": 8,
+            "nombre": "Semana extracurricular",
+            "fecha": "2025-06-23",
+            "tipo": "extra",
+            "descripcion": "Talleres, conferencias y actividades complementarias."
+        }
+    ]
+}

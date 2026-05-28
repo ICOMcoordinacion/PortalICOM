@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "Psicología Social",
+        "descripcion": "Al finalizar el curso el alumno identificará la problemática de la psicología social, los procesos implicados en el comportamiento social de los individuos en diferentes contextos, su anclaje en las relaciones sociales de la vida cotidiana y en los procesos en los que se desarrolla el hecho educativo.",
+        "url": "https://drive.google.com/drive/folders/1e9CsS3FuZvjmRcGNo4d_ugX0WwWzqUXx?usp=sharing",
+        "tags": ["PE01"]
+    },
+    {
+        "nombre": "Contabilidad Básica",
+        "descripcion": "Recursos para primer semestre, formatos y guías",
+        "url": "https://drive.google.com/drive/folders/ejemplo456",
+        "tags": ["contabilidad", "balanzas", "asientos"]
+    },
+    {
+        "nombre": "Recursos de Mercadotecnia",
+        "descripcion": "Casos prácticos, plantillas y lecturas",
+        "url": "https://drive.google.com/drive/folders/ejemplo789",
+        "tags": ["marketing", "publicidad", "casos"]
+    }
+]

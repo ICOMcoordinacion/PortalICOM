@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Instituto Comercial México | Portal Estudiante</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Estilos comunes -->
+    <link rel="stylesheet" href="portal.css">
+</head>
+<body>
+
+<div class="hamburger-menu" id="hamburgerBtn">
+    <i class="fas fa-bars"></i>
+</div>
+
+<div class="side-menu" id="sideMenu">
+    <div class="close-btn" id="closeMenuBtn">
+        <i class="fas fa-times"></i>
+    </div>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="#">Criterios de evaluación</a></li>
+        <li><a href="calendario.html">Calendario escolar</a></li>
+        <li><a href="#">Reglamento</a></li>
+        <li><a href="#">Otros sitios</a></li>
+    </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<main class="container">
+    <div class="hero">
+        <h1>Instituto Comercial México</h1>
+        <div class="sub">Portal de Estudiante</div>
+    </div>
+
+    <div class="search-wrapper">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar carpetas, exámenes, materias..." autocomplete="off">
+            <button class="clear-btn" id="clearSearchBtn" aria-label="Limpiar búsqueda">
+                <i class="fas fa-times-circle"></i>
+            </button>
+            <button class="search-submit" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="filter-btn" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="carpetas">Carpetas</button>
+        <button class="filter-btn" data-filter="formularios">Exámenes</button>
+    </div>
+
+    <div id="resultsContainer" class="results-grid"></div>
+    <footer>
+        <i class="fas fa-shield-alt"></i> Enlaces actualizados desde JSON | Instituto Comercial México
+    </footer>
+</main>
+
+<script src="portal.js">
+    if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+    window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>

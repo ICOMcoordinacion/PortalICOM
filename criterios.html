@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Instituto Comercial México | Criterios de evaluación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portal.css">
+    <style>
+        /* Ocultar buscador y filtros en esta página */
+        .search-wrapper, .filter-tabs {
+            display: none;
+        }
+        
+        /* Contenedor de widgets */
+        .criterios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+        
+        /* Widget individual */
+        .widget {
+            background: #141416;
+            border: 1px solid #2e2e32;
+            border-radius: 2px;
+            padding: 1.5rem 1.2rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s;
+            cursor: default;
+            animation: fadeInUp 0.5s ease backwards;
+        }
+        
+        .widget:hover {
+            transform: translateY(-5px);
+            border-color: #ff8c42;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Animación de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Retrasos escalonados para cada widget */
+        .widget:nth-child(1) { animation-delay: 0.05s; }
+        .widget:nth-child(2) { animation-delay: 0.15s; }
+        .widget:nth-child(3) { animation-delay: 0.25s; }
+        .widget:nth-child(4) { animation-delay: 0.35s; }
+        
+        /* Icono del widget */
+        .widget-icon {
+            font-size: 2.2rem;
+            color: #ff8c42;
+            margin-bottom: 1rem;
+        }
+        
+        .widget h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.8rem;
+        }
+        
+        .porcentaje {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff8c42;
+            margin: 0.8rem 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Barra de progreso animada */
+        .progress-bar-container {
+            background: #2c2c30;
+            border-radius: 2px;
+            height: 6px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #ff8c42;
+            border-radius: 2px;
+            transition: width 1s ease-out;
+        }
+        
+        /* Widget total (destacado) */
+        .widget-total {
+            background: #1f1f23;
+            border: 1px solid #ff8c42;
+            box-shadow: 0 0 12px rgba(255, 140, 66, 0.2);
+            grid-column: span 4;
+        }
+        
+        .widget-total .porcentaje {
+            font-size: 2.8rem;
+            color: #ffb347;
+        }
+        
+        /* Texto adicional */
+        .nota {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 1rem;
+            border-top: 1px solid #2e2e32;
+            padding-top: 0.8rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            color: #ff8c42;
+            text-decoration: none;
+            border-bottom: 1px solid #ff8c42;
+            transition: 0.2s;
+        }
+        
+        .back-link:hover {
+            color: #ffb347;
+            border-bottom-color: #ffb347;
+            gap: 0.8rem;
+        }
+        
+        @media (max-width: 640px) {
+            .criterios-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .porcentaje {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hamburger-menu" id="hamburgerBtn">
+    <i class="fas fa-bars"></i>
+</div>
+
+<div class="side-menu" id="sideMenu">
+    <div class="close-btn" id="closeMenuBtn">
+        <i class="fas fa-times"></i>
+    </div>
+    <ul>
+        <li><a href="index.html">Recursos</a></li>
+        <li><a href="criterios.html">Criterios de evaluación</a></li>
+        <li><a href="#">Calendario escolar</a></li>
+        <li><a href="#">Reglamento</a></li>
+        <li><a href="#">Otros sitios</a></li>
+    </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<main class="container">
+    <div class="hero">
+        <h1>Instituto Comercial México</h1>
+        <div class="sub">Criterios de evaluación</div>
+    </div>
+
+    <div class="criterios-grid">
+        <!-- Widget 1: Examen final -->
+        <div class="widget">
+            <div class="widget-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>Examen final</h3>
+            <div class="porcentaje">40%</div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" data-width="40"></div>
+            </div>
+            <div class="nota">Evaluación teórico-práctica</div>
+        </div>
+        
+        <!-- Widget 2: Actividades en clase -->
+        <div class="widget">
+            <div class="widget-icon"><i class="fas fa-chalkboard-user"></i></div>
+            <h3>Actividades en clase</h3>
+            <div class="porcentaje">20%</div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" data-width="20"></div>
+            </div>
+            <div class="nota">Participación, ejercicios, debates</div>
+        </div>
+        
+        <!-- Widget 3: Tareas -->
+        <div class="widget">
+            <div class="widget-icon"><i class="fas fa-tasks"></i></div>
+            <h3>Tareas</h3>
+            <div class="porcentaje">20%</div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" data-width="20"></div>
+            </div>
+            <div class="nota">Entregas semanales y proyectos</div>
+        </div>
+        
+        <!-- Widget 4: Complementos cualitativos -->
+        <div class="widget">
+            <div class="widget-icon"><i class="fas fa-star-of-life"></i></div>
+            <h3>Complementos cualitativos</h3>
+            <div class="porcentaje">20%</div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" data-width="20"></div>
+            </div>
+            <div class="nota">Asistencia, puntualidad, actitud</div>
+        </div>
+        
+        <!-- Widget total: 100% -->
+        <div class="widget widget-total">
+            <div class="widget-icon"><i class="fas fa-chart-pie"></i></div>
+            <h3>Total acumulado</h3>
+            <div class="porcentaje">100%</div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" data-width="100" style="background: #ffb347;"></div>
+            </div>
+            <div class="nota">Calificación mínima aprobatoria: 70%</div>
+        </div>
+    </div>
+    
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al portal</a>
+    
+    <footer style="margin-top: 3rem;">
+        <i class="fas fa-shield-alt"></i> Instituto Comercial México · Todos los derechos reservados
+    </footer>
+</main>
+
+<script>
+    // Menú hamburguesa (funcionalidad básica)
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    
+    function openMenu() {
+        sideMenu.classList.add('open');
+        overlay.classList.add('show');
+    }
+    function closeMenu() {
+        sideMenu.classList.remove('open');
+        overlay.classList.remove('show');
+    }
+    hamburgerBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    
+    // Animar las barras de progreso cuando la página carga
+    window.addEventListener('load', () => {
+        const fills = document.querySelectorAll('.progress-fill');
+        fills.forEach(fill => {
+            const width = fill.getAttribute('data-width');
+            if (width) {
+                setTimeout(() => {
+                    fill.style.width = width + '%';
+                }, 200);
+            }
+        });
+    });
+    if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+        window.location.href = 'index.html';
+    }
+</script>
+</body>
+</html>

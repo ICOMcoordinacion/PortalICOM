@@ -1,0 +1,203 @@
+/* calendario.css - Estilo Apple moderno */
+.calendario-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #141416;
+    border: none;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+}
+
+/* Navegación */
+.cal-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.cal-nav button {
+    background: #1f1f23;
+    border: none;
+    color: #ff8c42;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: 0.2s;
+    font-weight: 500;
+}
+.cal-nav button:hover {
+    background: #ff8c42;
+    color: #0b0b0e;
+}
+.month-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #f0f0f0;
+    letter-spacing: -0.5px;
+}
+
+/* Grid del calendario */
+.calendar-grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+}
+.calendar-grid th {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    color: #ff8c42;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #2e2e32;
+}
+.calendar-grid td {
+    text-align: center;
+    padding: 0.75rem 0.2rem;
+    border: none;
+    transition: 0.1s;
+    vertical-align: top;
+    position: relative;
+    background: #1a1a1c;
+    border-radius: 12px;
+    margin: 2px;
+}
+.calendar-grid td:hover {
+    background: #25252a;
+    transform: scale(0.98);
+}
+.day-number {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+/* Días de otros meses */
+.old-month .day-number, .next-month .day-number {
+    color: #5a5a60;
+}
+/* Celda con evento */
+.event-day {
+    background: #2a2a30;
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px #ff8c42 inset;
+}
+.event-day .day-number {
+    color: #ffb347;
+    font-weight: bold;
+}
+/* Indicador de evento estilizado */
+.event-indicator {
+    font-size: 0.7rem;
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+}
+.event-badge {
+    background: #ff8c42;
+    color: #0b0b0e;
+    padding: 0.1rem 0.3rem;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+/* Tooltip al pasar (opcional) */
+.event-tooltip {
+    display: none;
+    position: absolute;
+    background: #0e0e10;
+    border: 1px solid #ff8c42;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    border-radius: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+}
+.calendar-grid td:hover .event-tooltip {
+    display: block;
+}
+
+/* Resumen de eventos */
+.eventos-resumen {
+    margin-top: 2.5rem;
+}
+.eventos-resumen h3 {
+    font-family: 'Inter', sans-serif;
+    color: #ff8c42;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+.resumen-card {
+    background: #1f1f23;
+    border: none;
+    border-radius: 20px;
+    padding: 1rem;
+    transition: 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.resumen-card:hover {
+    transform: translateY(-4px);
+    background: #2a2a30;
+}
+.resumen-card .fecha {
+    font-size: 0.75rem;
+    color: #ffb347;
+    font-weight: 500;
+}
+.resumen-card h4 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: #fff;
+}
+.resumen-card p {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+.no-eventos {
+    text-align: center;
+    padding: 2rem;
+    color: #aaa;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 700px) {
+    .calendar-grid td {
+        padding: 0.3rem 0.1rem;
+    }
+    .day-number {
+        font-size: 0.7rem;
+    }
+    .month-year {
+        font-size: 1.2rem;
+    }
+    .event-badge {
+        font-size: 0.5rem;
+        padding: 0.05rem 0.2rem;
+    }
+}

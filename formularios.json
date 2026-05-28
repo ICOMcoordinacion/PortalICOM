@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "Examen diagnóstico Matemáticas",
+        "descripcion": "Evaluación inicial para nivelación",
+        "url": "https://forms.gle/ejemploABCD",
+        "tags": ["matemáticas", "diagnóstico", "evaluación"]
+    },
+    {
+        "nombre": "Encuesta de satisfacción",
+        "descripcion": "Tu opinión es importante para mejorar",
+        "url": "https://forms.gle/ejemploWXYZ",
+        "tags": ["encuesta", "calidad", "opinión"]
+    },
+    {
+        "nombre": "Registro para tutorías",
+        "descripcion": "Solicita asesoría personalizada",
+        "url": "https://forms.gle/ejemplo1234",
+        "tags": ["tutorías", "apoyo", "registro"]
+    }
+]

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Instituto Comercial México | Fechas importantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portal.css">
+    <style>
+        /* Estilos específicos para la página de fechas */
+        .fechas-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ff8c42;
+        }
+        .evento-card {
+            background: #141416;
+            border: 1px solid #2e2e32;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+        .evento-card:hover {
+            transform: translateX(5px);
+            border-color: #ff8c42;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .evento-card::before {
+            content: '';
+            position: absolute;
+            left: -2.1rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #ff8c42;
+            border-radius: 50%;
+            border: 2px solid #141416;
+        }
+        .fecha {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffb347;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .evento-card h3 {
+            font-size: 1.3rem;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .evento-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .badge-evento {
+            display: inline-block;
+            background: #ff8c4220;
+            color: #ff8c42;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.8rem;
+        }
+        @media (max-width: 640px) {
+            .timeline {
+                padding-left: 1rem;
+            }
+            .evento-card::before {
+                left: -1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hamburger-menu" id="hamburgerBtn">
+    <i class="fas fa-bars"></i>
+</div>
+
+<div class="side-menu" id="sideMenu">
+    <div class="close-btn" id="closeMenuBtn">
+        <i class="fas fa-times"></i>
+    </div>
+    <ul>
+        <li><a href="index.html">Recursos</a></li>
+        <li><a href="criterios.html">Criterios de evaluación</a></li>
+        <li><a href="calendario.html">Fechas importantes</a></li>
+        <li><a href="#">Reglamento</a></li>
+        <li><a href="#">Otros sitios</a></li>
+    </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<main class="container">
+    <div class="hero">
+        <h1>Instituto Comercial México</h1>
+        <div class="sub">Fechas importantes del módulo</div>
+    </div>
+
+    <div class="fechas-container">
+        <div id="eventosList" class="timeline">
+            <!-- Aquí se cargarán las fechas desde JSON -->
+            <div class="empty-state">Cargando fechas importantes...</div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 3rem;">
+        <i class="fas fa-shield-alt"></i> Calendario académico actualizado | Instituto Comercial México
+    </footer>
+</main>
+
+<script>
+    // Menú hamburguesa (simplificado)
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+    function openMenu() {
+        sideMenu.classList.add('open');
+        overlay.classList.add('show');
+    }
+    function closeMenu() {
+        sideMenu.classList.remove('open');
+        overlay.classList.remove('show');
+    }
+    if (hamburgerBtn) {
+        hamburgerBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    // Cargar eventos desde calendario.json
+    async function cargarEventos() {
+        try {
+            const response = await fetch('calendario.json');
+            if (!response.ok) throw new Error('No se pudo cargar calendario.json');
+            const data = await response.json();
+            if (!data.eventos || !Array.isArray(data.eventos)) throw new Error('Formato inválido');
+            renderizarEventos(data.eventos);
+        } catch (error) {
+            console.error(error);
+            document.getElementById('eventosList').innerHTML = `<div class="empty-state">Error al cargar fechas: ${error.message}</div>`;
+        }
+    }
+
+    function renderizarEventos(eventos) {
+        if (eventos.length === 0) {
+            document.getElementById('eventosList').innerHTML = '<div class="empty-state">No hay fechas programadas.</div>';
+            return;
+        }
+        // Ordenar por fecha
+        eventos.sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
+        const html = eventos.map(ev => {
+            const fechaObj = new Date(ev.fecha);
+            const fechaFormateada = fechaObj.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+            let tipoTexto = '';
+            if (ev.tipo === 'inicio') tipoTexto = 'Inicio de módulo';
+            else if (ev.tipo === 'semana') tipoTexto = 'Semana académica';
+            else if (ev.tipo === 'examenes') tipoTexto = 'Semana de exámenes';
+            else if (ev.tipo === 'extra') tipoTexto = 'Actividad extracurricular';
+            else tipoTexto = 'Evento importante';
+            
+            return `
+                <div class="evento-card">
+                    <div class="fecha">${fechaFormateada}</div>
+                    <h3>${escapeHtml(ev.nombre)}</h3>
+                    <p>${escapeHtml(ev.descripcion)}</p>
+                    <div class="badge-evento">${tipoTexto}</div>
+                </div>
+            `;
+        }).join('');
+        document.getElementById('eventosList').innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    cargarEventos();
+    if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+        window.location.href = 'index.html';
+    }
+</script>
+</body>
+</html>
